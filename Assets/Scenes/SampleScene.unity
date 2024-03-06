@@ -451,7 +451,7 @@ Transform:
   - {fileID: 1444702341}
   - {fileID: 279293784}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &136979035
 MonoBehaviour:
@@ -542,7 +542,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 142850187}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.32, y: 0.843, z: 0}
+  m_LocalPosition: {x: -0.4, y: 1.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1452,7 +1452,7 @@ Transform:
   - {fileID: 807894686}
   - {fileID: 83566861}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &992144659
 MonoBehaviour:
@@ -1600,10 +1600,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f9d4649768c09640b1ef508fd28e967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _coin: {fileID: 6979610520921920447, guid: 3d4bedbed1f50c640af3eab1389e0937, type: 3}
+  _item: {fileID: 1180863280480950530, guid: 3d4bedbed1f50c640af3eab1389e0937, type: 3}
   _maxCountCoin: 6
   _spawnPosition: {fileID: 908686251}
-  _waitStartsecond: 0
 --- !u!4 &1135180987
 Transform:
   m_ObjectHideFlags: 0
@@ -1617,7 +1616,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1178089490
 GameObject:
@@ -2131,7 +2130,7 @@ GameObject:
   - component: {fileID: 2012915087}
   - component: {fileID: 2012915088}
   m_Layer: 0
-  m_Name: Spawn
+  m_Name: SpawnMonsters
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2168,9 +2167,56 @@ MonoBehaviour:
   - {fileID: 992144659}
   - {fileID: 136979035}
   _monstersPrefab:
-  - {fileID: 6670835466890847684, guid: dc93923ec9c753241937c399bbc30a5c, type: 3}
   - {fileID: 6561916563254530544, guid: af66e260a29c8334fa706c623e9c4e1d, type: 3}
+  - {fileID: 6670835466890847684, guid: dc93923ec9c753241937c399bbc30a5c, type: 3}
   _countMonsters: 6
+--- !u!1 &2027779430
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2027779432}
+  - component: {fileID: 2027779431}
+  m_Layer: 0
+  m_Name: AllHeart
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2027779431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027779430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f9d4649768c09640b1ef508fd28e967, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _item: {fileID: 4357586769907028723, guid: f5f16336e0be9ff409c5d84baa6dc27d, type: 3}
+  _maxCountCoin: 3
+  _spawnPosition: {fileID: 908686251}
+--- !u!4 &2027779432
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027779430}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.306608, y: 0.22273558, z: -0.99950975}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2084494125
 GameObject:
   m_ObjectHideFlags: 0
@@ -2371,17 +2417,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1287411867179674666, guid: c7746e90508febd4495142b8ddd899cd, type: 3}
+      propertyPath: _attackRange
+      value: 0.26
+      objectReference: {fileID: 0}
     - target: {fileID: 1844269700177210192, guid: c7746e90508febd4495142b8ddd899cd, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1844269700177210192, guid: c7746e90508febd4495142b8ddd899cd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -17.44
+      value: -17.79
       objectReference: {fileID: 0}
     - target: {fileID: 1844269700177210192, guid: c7746e90508febd4495142b8ddd899cd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -10.09
+      value: -9.833
       objectReference: {fileID: 0}
     - target: {fileID: 1844269700177210192, guid: c7746e90508febd4495142b8ddd899cd, type: 3}
       propertyPath: m_LocalPosition.z

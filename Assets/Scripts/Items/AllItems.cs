@@ -1,13 +1,13 @@
 using System.Collections;
 using UnityEngine;
 
-public class AllCoins : MonoBehaviour
+public class AllItems : MonoBehaviour
 {
-    [SerializeField] private Coin _coin;
+    [SerializeField] private Item _item;
     [SerializeField] private int _maxCountCoin;    
     [SerializeField] private SpawnAreas _spawnPosition;    
 
-    private Coin[] _coins;    
+    private Item[] _coins;    
     private bool _isAllCoins = false;
 
     private void Start()
@@ -33,13 +33,12 @@ public class AllCoins : MonoBehaviour
         {
             yield return waitTime;
 
-            _coins = GetComponentsInChildren<Coin>();            
+            _coins = GetComponentsInChildren<Item>();            
 
             if (_coins.Length < _maxCountCoin)
             {               
                 Vector2 position = _spawnPosition.GetSpawnPosition();                
-                Coin newCoin = Instantiate(_coin, position, Quaternion.identity);
-
+                Item newCoin = Instantiate(_item, position, Quaternion.identity);
                 newCoin.transform.SetParent(gameObject.transform);
             }
             else

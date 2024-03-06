@@ -1,26 +1,32 @@
 using UnityEngine;
 
+[RequireComponent(typeof(MoveObject))]
+
 public class AnimationObject : MonoBehaviour
 {
-    public void Run(Animator animator, StatesAnim state)
+    private Animator _animator;     
+    private MoveObject _moveObject;
+
+    private void Awake()
     {
-        int _state = Animator.StringToHash("State");
-        animator.SetInteger(_state, (int)state);
+        _animator = GetComponent<Animator>();
+        _moveObject = GetComponent<MoveObject>();
     }
 
-    public bool CheckGround(Transform transform)
-    {       
-        float radius = 0.3f;
-
-        Collider2D[] coladers = Physics2D.OverlapCircleAll(transform.position, radius);
-
-        return coladers.Length > 1;
-    }
+    public void Run(StatesAnim state )
+    {
+        int stateHash = Animator.StringToHash("State");
+      
+        if (state != StatesAnim.Jump && _moveObject.CheckGround() == false)        
+            state = StatesAnim.Jump;
+        _animator.SetInteger(stateHash, (int)state);
+    }    
 }
 
 public enum StatesAnim
 {
     Idle,
     Run,
-    Jump
+    Jump,
+    Attack
 }
