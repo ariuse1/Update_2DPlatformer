@@ -1,16 +1,29 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 abstract public class Item : MonoBehaviour
 {
-    protected void RunAction() { }
+    [SerializeField] private UnityEvent _worked = new();
+    private IActionItem actionItem;   
+
+    private void Awake()
+    {
+        actionItem = GetComponent<IActionItem>(); 
+    }
+
+    public event UnityAction Worked
+    {
+        add => _worked.AddListener(value);
+        remove => _worked.RemoveListener(value);
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {        
-        if (collision.TryGetComponent<Hero>(out Hero hero))
+        if (collision.TryGetComponent<Player>(out Player hero))
         {
-            GetComponent<IActionItem>()?.Action(hero);
-            GetComponentInParent<AllItems>()?.StartSpawn();
-            Destroy(gameObject);
+            actionItem?.AddItem(hero);            
+            _worked.Invoke();
+            Destroy(gameObject);          
         }
     }
 }

@@ -5,21 +5,19 @@ using UnityEngine;
 public class MoveObject : MonoBehaviour
 {
     [SerializeField] private Transform _checkGroundPoint;
-    private Rigidbody2D _rigidbody2D;
-    private float _lastPosition;
+
+    private Rigidbody2D _rigidbody2D;   
 
     public bool IsFlip { get; private set; } = false;
     public bool IsJump { get; private set; }
 
     private void Awake()
     {
-        _rigidbody2D = GetComponent<Rigidbody2D>();
-        _lastPosition = transform.position.x;
+        _rigidbody2D = GetComponent<Rigidbody2D>();     
     }
 
     public void Flip(float direction, bool facingDirection)
     {
-
         IsFlip = facingDirection;
 
         if ((direction < 0 && !IsFlip) || (direction > 0 && IsFlip))
@@ -31,17 +29,17 @@ public class MoveObject : MonoBehaviour
         }
     }
 
-    public bool CheckGround()
+    public bool IsOnGround()
     {
-        float radius = 0.1f;
+        float radius = 0.4f;
         Transform checkGroundPoint;
 
         if (_checkGroundPoint == null)
             checkGroundPoint = transform;
         else checkGroundPoint = _checkGroundPoint;
 
-        Collider2D[] coladers = Physics2D.OverlapCircleAll(checkGroundPoint.position, radius);       
-        return coladers.Length > 1;
+        Collider2D[] coladers = Physics2D.OverlapCircleAll(checkGroundPoint.position, radius);
+        return coladers.Length > 1;        
     }
 
     public void Move(Vector2 target, float speed)
@@ -69,7 +67,7 @@ public class MoveObject : MonoBehaviour
         {           
             Jump(jumpForce, ForceMode2D.Force);
             Move(target, speed + acceleration);
-            IsJump =true;
+            IsJump = true;
         }
         else
         {            
@@ -90,6 +88,6 @@ public class MoveObject : MonoBehaviour
             checkGroundPoint = transform;
         else checkGroundPoint = _checkGroundPoint;
 
-        Gizmos.DrawWireSphere(checkGroundPoint.position, 0.1f);
+        Gizmos.DrawWireSphere(checkGroundPoint.position, 0.4f);
     }
 }

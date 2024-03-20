@@ -4,8 +4,9 @@ public class Heart : Item, IActionItem
 {
     [SerializeField] float hit = 1;
 
-    public void Action(Hero hero)
+    public void AddItem(Player hero)
     {
-        hero.GetComponent<Heallth>()?.TakeHealth(hit);
+        Heallth heallth = hero.GetComponent<Heallth>();
+        heallth?.TakeHealth(hit);
     }
 }

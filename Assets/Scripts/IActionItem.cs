@@ -1,4 +1,4 @@
 interface IActionItem
 {
-    public void Action(Hero hero);
+    public void AddItem(Player hero);
 }

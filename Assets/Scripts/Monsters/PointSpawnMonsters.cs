@@ -1,16 +1,19 @@
 using System.Linq;
+using System.Threading;
 using UnityEngine;
 
 public class PointSpawnMonsters : MonoBehaviour
 {
     [SerializeField] private Path[] _paths;
     [SerializeField] private Monster[] _monstersPrefab;
-    [SerializeField] private int _countMonsters;
+    [SerializeField] private int _maxCountMonsters;
 
-    private Monster[] _monsters;    
+    private Monster[] _monsters;
+    private int _countMonsters;
 
     public void Start()
     {
+        //_countMonsters = 0;
         Spawn();
     }
 
@@ -18,7 +21,7 @@ public class PointSpawnMonsters : MonoBehaviour
     {
         int _distanceBetweenObject = 1;
 
-        while (CheckQuantity())
+        while (_countMonsters < _maxCountMonsters)
         {
             Path selectPath = _paths[Random.Range(0, _paths.Length)];
             Monster selectMonster = _monstersPrefab[Random.Range(0, _monstersPrefab.Length)];
@@ -26,14 +29,17 @@ public class PointSpawnMonsters : MonoBehaviour
             Point[] points = selectPath.GetComponentsInChildren<Point>();
             int numbeSelectrPoint = Random.Range(0, points.Length);
 
-            if (_monsters.Any(monster => Mathf.Abs(monster.transform.position.x - 
+            _monsters = GetComponentsInChildren<Monster>();
+
+            if (_monsters.Any(monster => Mathf.Abs(monster.transform.position.x -
                 points[numbeSelectrPoint].transform.position.x) <= _distanceBetweenObject) == false)
             {
                 Monster monster = Instantiate(selectMonster, points[numbeSelectrPoint].transform.position, Quaternion.identity);
-               
+
                 monster.transform.SetParent(transform);
-                monster.SetStartParameters(selectPath, numbeSelectrPoint, ChooseRandomDirection());
-            }                
+                monster.SetPathParameters(selectPath, numbeSelectrPoint, ChooseRandomDirection());
+                _countMonsters++;
+            }            
         }
     }
 
@@ -41,17 +47,6 @@ public class PointSpawnMonsters : MonoBehaviour
     {
         int countDirection = 2;
 
-        if (Random.Range(0, countDirection) == 0)
-            return 1;
-        else return -1;
-    }
-
-    private bool CheckQuantity()
-    {
-        _monsters = GetComponentsInChildren<Monster>();
-
-        if (_monsters.Length >= _countMonsters)
-            return false;
-        else return true;
+        return (Random.Range(0, countDirection) == 0) ? 1 : -1;
     }
 }

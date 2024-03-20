@@ -1,11 +1,13 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(MoveObject))]
 
 public class AnimationObject : MonoBehaviour
 {
     private Animator _animator;     
     private MoveObject _moveObject;
+    private int _stateHash;
 
     private void Awake()
     {
@@ -13,13 +15,17 @@ public class AnimationObject : MonoBehaviour
         _moveObject = GetComponent<MoveObject>();
     }
 
+    private void Start()
+    {
+        _stateHash = Animator.StringToHash("State");
+    }
+
     public void Run(StatesAnim state )
     {
-        int stateHash = Animator.StringToHash("State");
-      
-        if (state != StatesAnim.Jump && _moveObject.CheckGround() == false)        
+        if (_moveObject.IsOnGround() == false && state != StatesAnim.Jump)
             state = StatesAnim.Jump;
-        _animator.SetInteger(stateHash, (int)state);
+
+        _animator.SetInteger(_stateHash, (int)state);
     }    
 }
 

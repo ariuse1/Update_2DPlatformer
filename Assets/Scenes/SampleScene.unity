@@ -1601,7 +1601,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _item: {fileID: 1180863280480950530, guid: 3d4bedbed1f50c640af3eab1389e0937, type: 3}
-  _maxCountCoin: 6
+  _maxCountItem: 0
   _spawnPosition: {fileID: 908686251}
 --- !u!4 &1135180987
 Transform:
@@ -2167,9 +2167,9 @@ MonoBehaviour:
   - {fileID: 992144659}
   - {fileID: 136979035}
   _monstersPrefab:
-  - {fileID: 6561916563254530544, guid: af66e260a29c8334fa706c623e9c4e1d, type: 3}
   - {fileID: 6670835466890847684, guid: dc93923ec9c753241937c399bbc30a5c, type: 3}
-  _countMonsters: 6
+  - {fileID: 6561916563254530544, guid: af66e260a29c8334fa706c623e9c4e1d, type: 3}
+  _maxCountMonsters: 6
 --- !u!1 &2027779430
 GameObject:
   m_ObjectHideFlags: 0
@@ -2200,7 +2200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _item: {fileID: 4357586769907028723, guid: f5f16336e0be9ff409c5d84baa6dc27d, type: 3}
-  _maxCountCoin: 3
+  _maxCountItem: 0
   _spawnPosition: {fileID: 908686251}
 --- !u!4 &2027779432
 Transform:

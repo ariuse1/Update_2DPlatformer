@@ -17,6 +17,9 @@ GameObject:
   - component: {fileID: 7352476032311391908}
   - component: {fileID: 3414709342725290791}
   - component: {fileID: 8528673247565447025}
+  - component: {fileID: 1902573120783631045}
+  - component: {fileID: 1846490398687665415}
+  - component: {fileID: 7995756351764482838}
   m_Layer: 3
   m_Name: Toad
   m_TagString: Untagged
@@ -76,10 +79,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 2
   _jumpForce: 32
-  _attackDamage: 0
-  _targetGoalBoxs:
-  - {fileID: 1243755502950389509}
-  _attackBox: {fileID: 6490497922228858113}
 --- !u!50 &787196344960499056
 Rigidbody2D:
   serializedVersion: 4
@@ -95,7 +94,7 @@ Rigidbody2D:
   m_Mass: 2
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.8
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -232,7 +231,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
-  _currentHealth: 0
+  _currentHealth: 100
+--- !u!114 &1902573120783631045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4326216682564150928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d5112de5fe95534b84cf135851407cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1846490398687665415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4326216682564150928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb9ec1305d3fd4d4091128bf79bf358b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetGoalBoxs:
+  - {fileID: 1243755502950389509}
+--- !u!114 &7995756351764482838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4326216682564150928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0165999ac7bd4b147b80cfa5a04841ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackBox: {fileID: 6490497922228858113}
+  _attackDamage: 1
 --- !u!1 &5063970859447419388
 GameObject:
   m_ObjectHideFlags: 0

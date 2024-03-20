@@ -4,7 +4,14 @@ public class Heallth : MonoBehaviour
 {
     [SerializeField] private float _maxHealth = 100f;
     [SerializeField] private float _currentHealth;
-   
+
+    private IDie _iDie;
+
+    private void Awake()
+    {
+        _iDie = GetComponent<IDie>();
+    }
+
     private void Start()
     {
         _currentHealth = _maxHealth;
@@ -16,7 +23,7 @@ public class Heallth : MonoBehaviour
       
         if (_currentHealth <= 0)
         {
-            GetComponent<IDie>()?.Die();          
+            _iDie?.Die();          
         }
     }
 

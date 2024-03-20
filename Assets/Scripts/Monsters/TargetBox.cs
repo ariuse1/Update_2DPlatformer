@@ -16,9 +16,9 @@ public class TargetBox : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider2D)
     {
-        if(collider2D.TryGetComponent(out Hero hero))
+        if(collider2D.TryGetComponent(out Player hero))
         {           
-            Target = hero.GetComponent<Transform>();
+            Target = hero.transform;
           
             _worked.Invoke();
         }
@@ -26,7 +26,7 @@ public class TargetBox : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collider2D)
     {
-        if (collider2D.TryGetComponent(out Hero hero))
+        if (collider2D.TryGetComponent(out Player hero))
         {           
             Target = null;
           
