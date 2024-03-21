@@ -1601,7 +1601,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _item: {fileID: 1180863280480950530, guid: 3d4bedbed1f50c640af3eab1389e0937, type: 3}
-  _maxCountItem: 0
+  _maxCountItem: 6
   _spawnPosition: {fileID: 908686251}
 --- !u!4 &1135180987
 Transform:
@@ -2200,7 +2200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _item: {fileID: 4357586769907028723, guid: f5f16336e0be9ff409c5d84baa6dc27d, type: 3}
-  _maxCountItem: 0
+  _maxCountItem: 4
   _spawnPosition: {fileID: 908686251}
 --- !u!4 &2027779432
 Transform:
