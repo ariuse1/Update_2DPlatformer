@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(CombatPlayer))]
 [RequireComponent(typeof(MovePlayer))]
 
-public class Player : MonoBehaviour, IDie
+public class Player : MonoBehaviour
 {
     private const string StringHorizontal = "Horizontal";
     private const string StringJump = "Jump";
@@ -76,5 +76,21 @@ public class Player : MonoBehaviour, IDie
         }
 
         _animationObject.Run(stateAnim);
+    }
+
+    private void OnEnable()
+    {
+        if (TryGetComponent<Heallth>(out Heallth heallth))
+        {
+            heallth.Die += Die;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (TryGetComponent<Heallth>(out Heallth heallth))
+        {
+            heallth.Die -= Die;
+        }
     }
 }

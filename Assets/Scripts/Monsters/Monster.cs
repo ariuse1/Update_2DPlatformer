@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Pursuit))]
 [RequireComponent(typeof(CombatMonster))]
 
-abstract public class Monster : MonoBehaviour, IDie
+abstract public class Monster : MonoBehaviour
 {
     [SerializeField] protected float _speed;
     [SerializeField] protected float _jumpForce;  
@@ -89,6 +89,22 @@ abstract public class Monster : MonoBehaviour, IDie
 
         _moveObject.Flip(transform.position.x - _target.x, _isFlipX);
         _isFlipX = _moveObject.IsFlip;
+    }
+
+    private void OnEnable()
+    {
+        if (TryGetComponent<Heallth>(out Heallth heallth))
+        {
+            heallth.Die += Die;
+        }            
+    }
+
+    private void OnDisable()
+    {
+        if (TryGetComponent<Heallth>(out Heallth heallth))
+        {
+            heallth.Die -= Die;
+        }
     }
 }
 
