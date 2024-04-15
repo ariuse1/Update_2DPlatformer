@@ -6,6 +6,7 @@ public class CombatPlayer : MonoBehaviour
     [SerializeField] private AttackPoint _attackPoint;
     [SerializeField] private float _attackRange = 0.5f;
     [SerializeField] private float _attackDamage = 20;
+    [SerializeField] float _waitTimeAttack = 1f;
     [SerializeField] private LayerMask _enemyLayers;
 
     private float _timeNextAttack;
@@ -22,11 +23,10 @@ public class CombatPlayer : MonoBehaviour
     public void Attack()
     {
         float waitTime = 1f;
-        float waitTimeAttack = 2f;
-
-        if(waitTime > waitTimeAttack)
+        
+        if(waitTime > _waitTimeAttack)
         {
-            waitTime = waitTimeAttack;
+            waitTime = _waitTimeAttack;
         }
 
         IsAttack = false;
@@ -42,7 +42,7 @@ public class CombatPlayer : MonoBehaviour
             }
 
             IsAttack = true;
-            _timeNextAttack = Time.time + waitTimeAttack;
+            _timeNextAttack = Time.time + _waitTimeAttack;
             _delayTime = Time.time + waitTime;
 
             if (!IsWork)
