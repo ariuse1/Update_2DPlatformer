@@ -47,4 +47,9 @@ public class Heallth : MonoBehaviour
         _currentHealth = Mathf.Clamp(_currentHealth + health, _minHealth, _maxHealth);
         _healthBar.SetHealth(_currentHealth);
     }
+
+    public float GetCurrentHealth()
+    {
+        return _currentHealth;
+    }
 }

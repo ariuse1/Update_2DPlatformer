@@ -50,8 +50,6 @@ public class BoxBar : Bar
 
     private IEnumerator SetSlowHealth()
     {
-
-
         while (_currentHealth != _newHealth)
         {
             _currentHealth = Mathf.MoveTowards(_currentHealth, _newHealth, _fillingSpeed * Time.deltaTime);
