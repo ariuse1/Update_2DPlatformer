@@ -7,7 +7,6 @@ public class SpellSystem : MonoBehaviour
     [SerializeField] private List<Spell> _spells;  
 
     private List<Spell> _spellsCast = new();
-
     private int _spellIndex = 0;
 
     private void Update()

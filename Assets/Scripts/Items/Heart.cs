@@ -7,6 +7,6 @@ public class Heart : Item, IActionItem
     public void AddItem(Player hero)
     {
         if(hero.TryGetComponent<Heallth>(out Heallth heallth))
-            heallth.TakeHealth(hit);
+            heallth.Treat(hit);
     }
 }

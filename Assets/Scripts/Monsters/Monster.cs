@@ -9,7 +9,7 @@ using UnityEngine;
 abstract public class Monster : MonoBehaviour
 {
     [SerializeField] protected float _speed;
-    [SerializeField] protected float _jumpForce;  
+    [SerializeField] protected float _jumpForce;
 
     protected AnimationObject _animationObject;
     protected StatesAnim _state;
@@ -19,7 +19,7 @@ abstract public class Monster : MonoBehaviour
     protected Pursuit _pursuit;
     protected CombatMonster _combat;
     protected MoveObject _moveObject;
-    protected Vector2 _target;    
+    protected Vector2 _target;
 
     private bool _isJump = false;
 
@@ -43,7 +43,7 @@ abstract public class Monster : MonoBehaviour
     }
 
     protected void Action()
-    {      
+    {
         bool IsOnGround = _moveObject.IsOnGround();
         bool isGoalOrReturn = _pursuit.IsWork;
         bool isAttack = _combat.IsWork;
@@ -59,7 +59,7 @@ abstract public class Monster : MonoBehaviour
             if (IsOnGround)
             {
                 _isJump = false;
-            }            
+            }
         }
 
         if (isAttack && IsOnGround)
@@ -70,7 +70,7 @@ abstract public class Monster : MonoBehaviour
             if (_combat.IsAttack)
             {
                 _state = StatesAnim.Attack;
-            }          
+            }
         }
 
         if (isGoalOrReturn && !isAttack && IsOnGround)
@@ -81,11 +81,11 @@ abstract public class Monster : MonoBehaviour
         }
 
         if (!isGoalOrReturn && !isAttack)
-        {           
+        {
             _movementRoute.MoveToPath(_speed, _jumpForce);
             _target = _movementRoute.Target;
             _state = StatesAnim.Run;
-        }        
+        }
 
         _moveObject.Flip(transform.position.x - _target.x, _isFlipX);
         _isFlipX = _moveObject.IsFlip;
@@ -96,7 +96,7 @@ abstract public class Monster : MonoBehaviour
         if (TryGetComponent<Heallth>(out Heallth heallth))
         {
             heallth.Die += Die;
-        }            
+        }
     }
 
     private void OnDisable()

@@ -11,7 +11,7 @@ public class CombatPlayer : MonoBehaviour
 
     private float _timeNextAttack;
     private float _delayTime;
-  
+
     public bool IsWork { get; private set; } = false;
     public bool IsAttack { get; private set; } = false;
 
@@ -23,8 +23,8 @@ public class CombatPlayer : MonoBehaviour
     public void Attack()
     {
         float waitTime = 1f;
-        
-        if(waitTime > _waitTimeAttack)
+
+        if (waitTime > _waitTimeAttack)
         {
             waitTime = _waitTimeAttack;
         }
@@ -49,16 +49,16 @@ public class CombatPlayer : MonoBehaviour
             {
                 StartCoroutine(Wait());
             }
-        }   
+        }
     }
 
     private IEnumerator Wait()
     {
         IsWork = true;
         yield return new WaitWhile(() => _delayTime >= Time.time);
-        IsWork = false;     
+        IsWork = false;
     }
-     
+
     private void OnDrawGizmosSelected()
     {
         if (_attackPoint == null)

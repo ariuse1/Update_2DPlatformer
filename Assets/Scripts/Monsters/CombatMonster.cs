@@ -1,25 +1,24 @@
 using UnityEngine;
-
 public class CombatMonster : MonoBehaviour
 {
     [SerializeField] private TargetBox _attackBox;
     [SerializeField] protected float _attackDamage;
 
     private float _timeNextAttack;
-    private float _timeWait;  
+    private float _timeWait;
 
     public Vector2 Target { get; private set; }
     public bool IsWork { get; private set; } = false;
     public bool IsAttack { get; private set; } = false;
 
     public void Attack()
-    {     
+    {
         float waitTimeAttack = 1f;
         float delay = 1.5f;
 
         IsAttack = _attackBox.Target != null;
 
-        if(!IsAttack && _timeWait <= Time.time)
+        if (!IsAttack && _timeWait <= Time.time)
         {
             IsWork = false;
         }

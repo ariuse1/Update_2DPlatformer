@@ -10,42 +10,47 @@ public class BoxBar : Bar
     [SerializeField] private Image _image;
     [SerializeField] private bool _isSlowly;
     [SerializeField] private float _fillingSpeed;
-    [SerializeField] private bool _isPosition;
+    [SerializeField] private bool _isMoveHPBar;
+    [SerializeField] private Vector3 _offsetBar;
+    [SerializeField] private Heallth _heallth;
 
     private float _newHealth;
+    private bool _isStart = true;
+    private bool _isWork = false;
 
-    private void Start()
+    private void Update()
     {
-        SetStartParameters(_maxHealth, _currentHealth);
-    }   
+        if (_isStart)
+            SetHealth(_heallth.MaxHealth, _heallth.CurrentHealth);
 
-    public override void SetStartParameters(float maxHealth, float currentHealth)
-    {
-        SetMaxHealth(maxHealth);
-        _currentHealth = currentHealth;
-        SetGradient();
+        if (_isMoveHPBar)
+            this.transform.position = Camera.main.WorldToScreenPoint(_heallth.transform.position + _offsetBar);
+
+        if (_heallth.CurrentHealth != _currentHealth)
+            SetHealth(_heallth.MaxHealth, _heallth.CurrentHealth);
     }
 
-    public override void SetMaxHealth(float maxHealth)
+    public override void SetHealth(float maxHealth, float currentHealth)
     {
         _maxHealth = maxHealth;
-        SetGradient();
-    }
-
-    public override void SetHealth(float currentHealth)
-    {
         _newHealth = currentHealth;
 
-        if (_isSlowly)
+        if (_isSlowly && _isStart == false)
         {
-            StopCoroutine(SetSlowHealth());
-            StartCoroutine(SetSlowHealth());
+            if (_isWork == false)
+            {
+                _isWork = true;
+                StopCoroutine(SetSlowHealth());
+                StartCoroutine(SetSlowHealth());
+            }
         }
         else
         {
             _currentHealth = currentHealth;
             SetGradient();
         }
+
+        _isStart = false;
     }
 
     private IEnumerator SetSlowHealth()
@@ -56,6 +61,8 @@ public class BoxBar : Bar
             SetGradient();
             yield return null;
         }
+
+        _isWork = false;
     }
 
     private void SetGradient()

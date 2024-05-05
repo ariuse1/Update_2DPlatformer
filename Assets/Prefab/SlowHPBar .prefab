@@ -199,7 +199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
-  _currentHealth: 100
+  _currentHealth: 50
   _gradient:
     serializedVersion: 2
     key0: {r: 0.9433962, g: 0, b: 0, a: 1}
@@ -233,4 +233,6 @@ MonoBehaviour:
   _image: {fileID: 3883247126847034764}
   _isSlowly: 1
   _fillingSpeed: 20
-  _isPosition: 0
+  _isMoveHPBar: 0
+  _offsetBar: {x: 0, y: 0, z: 0}
+  _heallth: {fileID: 0}

@@ -43,7 +43,7 @@ Transform:
   - {fileID: 6712895389899752545}
   - {fileID: 1953258184904508670}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &5593284303525431073
 Animator:
@@ -273,9 +273,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 100
   _currentHealth: 100
-  _isMoveHPBar: 1
-  _healthBar: {fileID: 7690335236413952094}
-  _offsetBar: {x: 0, y: 1.5, z: 0}
 --- !u!1 &5057429877033006912
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,7 +537,9 @@ MonoBehaviour:
   _image: {fileID: 7658758610289639678}
   _isSlowly: 1
   _fillingSpeed: 20
-  _isPosition: 1
+  _isMoveHPBar: 1
+  _offsetBar: {x: 0, y: 1.5, z: 0}
+  _heallth: {fileID: 4292125307201361803}
 --- !u!1 &8228113773304662589
 GameObject:
   m_ObjectHideFlags: 0

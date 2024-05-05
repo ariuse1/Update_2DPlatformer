@@ -42,15 +42,15 @@ public class Vampir : Spell
 
                 if (enemyHeallth != null)
                 {
-                    float currentHealth = enemyHeallth.GetCurrentHealth();
+                    float currentHealth = enemyHeallth.CurrentHealth;
 
                     if (currentHealth > _attackDamage)
                     {
-                        _heallthOwner.TakeHealth(_attackDamage);
+                        _heallthOwner.Treat(_attackDamage);
                     }
                     else
                     {
-                        _heallthOwner.TakeHealth(currentHealth);
+                        _heallthOwner.Treat(currentHealth);
                     }
 
                     enemyHeallth.TakeDamage(_attackDamage);

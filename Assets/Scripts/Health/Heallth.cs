@@ -4,52 +4,32 @@ using UnityEngine.Events;
 public class Heallth : MonoBehaviour
 {
     [SerializeField] private float _maxHealth;
-    [SerializeField] private float _currentHealth;
-    [SerializeField] private bool _isMoveHPBar;
-    [SerializeField] private Bar _healthBar;
-    [SerializeField] private Vector3 _offsetBar;
+    [SerializeField] private float _currentHealth;   
 
-    private UnityEvent _die = new UnityEvent();
+    public float CurrentHealth { get; private set; }
+    public float MaxHealth { get; private set; }
 
     private float _minHealth;
 
-    public event UnityAction Die
-    {
-        add => _die.AddListener(value);
-        remove => _die.RemoveListener(value);
-    }
+    public UnityAction Die;
 
     private void Start()
     {
-        _currentHealth = Mathf.Clamp(_currentHealth, _minHealth, _maxHealth);
-
-        if (_healthBar != null)
-            _healthBar.SetStartParameters(_maxHealth, _currentHealth);
-    }
-
-    private void Update()
-    {
-        if (_isMoveHPBar)
-            _healthBar.transform.position = Camera.main.WorldToScreenPoint(transform.position + _offsetBar);
+        MaxHealth = _maxHealth;
+        CurrentHealth = Mathf.Clamp(_currentHealth, _minHealth, MaxHealth);
     }
 
     public void TakeDamage(float damage)
     {
-        _currentHealth = Mathf.Clamp(_currentHealth - damage, _minHealth, _maxHealth);
-        _healthBar.SetHealth(_currentHealth);
+        CurrentHealth = Mathf.Clamp(CurrentHealth - damage, _minHealth, MaxHealth);
 
-        if (_currentHealth == _minHealth)
-            _die.Invoke();
+        if (CurrentHealth == _minHealth)
+            Die.Invoke();       
     }
 
-    public void TakeHealth(float health)
+    public void Treat(float health)
     {
-        _currentHealth = Mathf.Clamp(_currentHealth + health, _minHealth, _maxHealth);
-        _healthBar.SetHealth(_currentHealth);
-    }
-
-    public float GetCurrentHealth()
-    {
-        return _currentHealth;
+        CurrentHealth = Mathf.Clamp(CurrentHealth + health, _minHealth, MaxHealth);
     }
 }
+
