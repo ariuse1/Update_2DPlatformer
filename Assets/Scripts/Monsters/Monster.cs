@@ -95,7 +95,7 @@ abstract public class Monster : MonoBehaviour
     {
         if (TryGetComponent<Heallth>(out Heallth heallth))
         {
-            heallth.Die += Die;
+            heallth.Died += Die;
         }
     }
 
@@ -103,7 +103,7 @@ abstract public class Monster : MonoBehaviour
     {
         if (TryGetComponent<Heallth>(out Heallth heallth))
         {
-            heallth.Die -= Die;
+            heallth.Died -= Die;
         }
     }
 }

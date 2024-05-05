@@ -82,7 +82,7 @@ public class Player : MonoBehaviour
     {
         if (TryGetComponent<Heallth>(out Heallth heallth))
         {
-            heallth.Die += Die;
+            heallth.Died += Die;
         }
     }
 
@@ -90,7 +90,7 @@ public class Player : MonoBehaviour
     {
         if (TryGetComponent<Heallth>(out Heallth heallth))
         {
-            heallth.Die -= Die;
+            heallth.Died -= Die;
         }
     }
 }

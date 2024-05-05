@@ -11,7 +11,7 @@ public class Heallth : MonoBehaviour
 
     private float _minHealth;
 
-    public UnityAction Die;
+    public UnityAction Died;
 
     private void Start()
     {
@@ -24,7 +24,7 @@ public class Heallth : MonoBehaviour
         CurrentHealth = Mathf.Clamp(CurrentHealth - damage, _minHealth, MaxHealth);
 
         if (CurrentHealth == _minHealth)
-            Die.Invoke();       
+            Died.Invoke();       
     }
 
     public void Treat(float health)
