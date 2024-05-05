@@ -5,14 +5,14 @@ using UnityEngine;
 public class Pursuit : MonoBehaviour
 {
     [SerializeField] private TargetBox[] _targetGoalBoxs;
-    public bool IsWork { get; private set; }
-    public Vector2 Target { get; private set; }
 
     private bool _isGoal;
     private bool _isReturn;
-
     private Vector2 _returnPoint;
     private MoveObject _moveObject;
+
+    public bool IsWork { get; private set; }
+    public Vector2 Target { get; private set; }
 
     private void Awake()
     {
@@ -22,6 +22,7 @@ public class Pursuit : MonoBehaviour
     public void GoalOrReturn(float speed)
     {
         float accuracy = 0.5f;
+
         if (_isGoal )
         {
             FindTargetGoal();

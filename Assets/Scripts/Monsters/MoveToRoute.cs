@@ -4,13 +4,14 @@ using UnityEngine;
 [RequireComponent(typeof(MoveObject))]
 
 public class MoveToRoute : MonoBehaviour
-{
+{   
     private MoveObject _moveObject;
-    public Vector2 Target { get; private set; }
     private Point[] _movementPoints;
     private int _nextPoint;
     private int _currentPoint;
     private int _directionPath;
+
+    public Vector2 Target { get; private set; }
 
     private void Awake()
     {

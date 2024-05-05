@@ -5,7 +5,7 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] private Item _item;
     [SerializeField] private int _maxCountItem;
-    [SerializeField] private SpawnAreas _spawnPosition;
+    [SerializeField] private SpawnerAreas _spawnPosition;
 
     private int _itemsCount;
     private bool _isWork;

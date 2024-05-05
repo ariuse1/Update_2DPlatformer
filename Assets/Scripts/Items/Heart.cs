@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class Heart : Item, IActionItem
 {
-    [SerializeField] private float hit = 1;
+    [SerializeField] private float _hit = 1;
 
     public void AddItem(Player hero)
     {
         if(hero.TryGetComponent<Heallth>(out Heallth heallth))
-            heallth.Treat(hit);
+            heallth.Treat(_hit);
     }
 }

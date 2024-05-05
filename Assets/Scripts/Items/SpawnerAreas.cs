@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SpawnAreas : MonoBehaviour
+public class SpawnerAreas : MonoBehaviour
 {  
     private Area[] _areas;
     private int _numberArea;

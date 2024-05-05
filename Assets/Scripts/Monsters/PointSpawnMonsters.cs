@@ -12,14 +12,13 @@ public class PointSpawnMonsters : MonoBehaviour
     private int _countMonsters;
 
     public void Start()
-    {
-        //_countMonsters = 0;
+    {        
         Spawn();
     }
 
     private void Spawn()
     {
-        int _distanceBetweenObject = 1;
+        int distanceBetweenObject = 1;
 
         while (_countMonsters < _maxCountMonsters)
         {
@@ -32,7 +31,7 @@ public class PointSpawnMonsters : MonoBehaviour
             _monsters = GetComponentsInChildren<Monster>();
 
             if (_monsters.Any(monster => Mathf.Abs(monster.transform.position.x -
-                points[numbeSelectrPoint].transform.position.x) <= _distanceBetweenObject) == false)
+                points[numbeSelectrPoint].transform.position.x) <= distanceBetweenObject) == false)
             {
                 Monster monster = Instantiate(selectMonster, points[numbeSelectrPoint].transform.position, Quaternion.identity);
 

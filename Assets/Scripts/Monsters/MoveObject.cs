@@ -6,14 +6,14 @@ public class MoveObject : MonoBehaviour
 {
     [SerializeField] private Transform _checkGroundPoint;
 
-    private Rigidbody2D _rigidbody2D;   
+    private Rigidbody2D _rigidbody2D;
 
     public bool IsFlip { get; private set; } = false;
     public bool IsJump { get; private set; }
 
     private void Awake()
     {
-        _rigidbody2D = GetComponent<Rigidbody2D>();     
+        _rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
     public void Flip(float direction, bool facingDirection)
@@ -39,7 +39,8 @@ public class MoveObject : MonoBehaviour
         else checkGroundPoint = _checkGroundPoint;
 
         Collider2D[] coladers = Physics2D.OverlapCircleAll(checkGroundPoint.position, radius);
-        return coladers.Length > 1;        
+
+        return coladers.Length > 1;
     }
 
     public void Move(Vector2 target, float speed)
@@ -64,14 +65,14 @@ public class MoveObject : MonoBehaviour
         }
 
         if ((target.y - transform.position.y > positionYShift) && isCanJump)
-        {           
+        {
             Jump(jumpForce, ForceMode2D.Force);
             Move(target, speed + acceleration);
             IsJump = true;
         }
         else
-        {            
-            Move(target, speed);            
+        {
+            Move(target, speed);
         }
     }
 

@@ -11,7 +11,7 @@ public class Heallth : MonoBehaviour
 
     private float _minHealth;
 
-    public UnityAction Died;
+    public event UnityAction Died;
 
     private void Start()
     {

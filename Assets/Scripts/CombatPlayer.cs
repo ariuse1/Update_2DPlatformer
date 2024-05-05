@@ -55,7 +55,9 @@ public class CombatPlayer : MonoBehaviour
     private IEnumerator Wait()
     {
         IsWork = true;
+
         yield return new WaitWhile(() => _delayTime >= Time.time);
+
         IsWork = false;
     }
 
