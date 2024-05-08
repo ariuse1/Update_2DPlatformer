@@ -1,11 +1,11 @@
 using UnityEngine;
-using UnityEngine.Events;
+using System;
 
 public class TargetBox : MonoBehaviour
 {   
     public Transform Target { get; private set; }
 
-    public event UnityAction Worked;
+    public event Action Worked;
 
     private void OnTriggerEnter2D(Collider2D collider2D)
     {

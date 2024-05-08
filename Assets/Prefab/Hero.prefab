@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 7711611584815367069}
   - component: {fileID: 3580695290565069656}
   - component: {fileID: 3047749752926842308}
+  - component: {fileID: 7627750177107116062}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Untagged
@@ -306,6 +307,7 @@ MonoBehaviour:
   _attackPoint: {fileID: 110249455314426838}
   _attackRange: 0.5
   _attackDamage: 20
+  _waitTimeAttack: 1
   _enemyLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -337,9 +339,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 100
   _currentHealth: 100
-  _isMoveHPBar: 1
-  _healthBar: {fileID: 2601097227134086520}
-  _offsetBar: {x: 0.06, y: 1.5, z: 0}
+--- !u!114 &7627750177107116062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4528413248587262414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c1c448d353cb784198f40dd87004475, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8115661783781348591
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,14 +520,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6447761007455095518, guid: 8046f1b1b9169b64f9620b51b61527a6, type: 3}
   m_PrefabInstance: {fileID: 5676844529555065754}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2601097227134086520 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7696863007462876898, guid: 8046f1b1b9169b64f9620b51b61527a6, type: 3}
-  m_PrefabInstance: {fileID: 5676844529555065754}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 433da598f11b46b449b4da2668506c5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

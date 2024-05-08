@@ -1,5 +1,6 @@
 using UnityEngine;
-using UnityEngine.Events;
+using System;
+
 
 public class Heallth : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class Heallth : MonoBehaviour
 
     private float _minHealth;
 
-    public event UnityAction Died;
+    public event Action Died;
 
     private void Start()
     {

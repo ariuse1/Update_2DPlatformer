@@ -14,25 +14,25 @@ public class SpellSystem : MonoBehaviour
         if (Input.GetKey(KeyCode.Alpha1))
         {           
             _spellIndex = 0;
-            ActivateSpell();
+            ActivateSpell(_spellIndex);
         }
 
         if (Input.GetKey(KeyCode.Alpha2))
         {            
             _spellIndex = 1;
-            ActivateSpell();
+            ActivateSpell(_spellIndex);
         }
 
         if (Input.GetKey(KeyCode.Alpha3))
         {            
             _spellIndex = 2;
-            ActivateSpell();
+            ActivateSpell(_spellIndex);
         }
 
         if (Input.GetKey(KeyCode.Alpha4))
         {            
             _spellIndex = 3;
-            ActivateSpell();
+            ActivateSpell(_spellIndex);
         }        
     }
 
@@ -56,15 +56,15 @@ public class SpellSystem : MonoBehaviour
         return _spellsCast.Count;
     }
 
-    private void ActivateSpell()
+    private void ActivateSpell(int index)
     {
         _spellsCast = _spellsCast.Where(i => i != null).ToList();
 
-        if (_spells.Count >= _spellIndex)
+        if (_spells.Count > index)
         {
-            if (FindSpell(_spells[_spellIndex]) == false)
+            if (FindSpell(_spells[index]) == false)
             {
-                Spell newSpell = Instantiate(_spells[_spellIndex], transform.position, Quaternion.identity);
+                Spell newSpell = Instantiate(_spells[index], transform.position, Quaternion.identity);
                 newSpell.transform.SetParent(transform);
                 newSpell.ActivateSpell();
                 _spellsCast.Add(newSpell);                

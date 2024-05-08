@@ -1,12 +1,13 @@
 using UnityEngine;
 
-public class Heart : Item, IActionItem
+public class Heart : Item
 {
     [SerializeField] private float _hit = 1;
 
-    public void AddItem(Player hero)
+    public float Hit { get; private set; }  
+
+    private void Start()
     {
-        if(hero.TryGetComponent<Heallth>(out Heallth heallth))
-            heallth.Treat(_hit);
+        Hit = _hit;
     }
 }

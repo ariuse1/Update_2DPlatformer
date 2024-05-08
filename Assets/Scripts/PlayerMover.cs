@@ -2,12 +2,12 @@ using UnityEngine;
 
 [RequireComponent(typeof(MoveObject))]
 
-public class MovePlayer : MonoBehaviour
+public class PlayerMover : MonoBehaviour
 {
-    [SerializeField] private float _speed;
-    [SerializeField] private float _jumpForce;
-
     private const string StringHorizontal = "Horizontal";
+
+    [SerializeField] private float _speed;
+    [SerializeField] private float _jumpForce;    
 
     private MoveObject _moveObject;
     private bool _isFlipX = false;

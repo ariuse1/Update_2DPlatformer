@@ -1,9 +1,7 @@
 using UnityEngine;
 
-[RequireComponent(typeof(AnimationObject))]
-[RequireComponent(typeof(MoveObject))]
-[RequireComponent(typeof(CombatPlayer))]
-[RequireComponent(typeof(MovePlayer))]
+[RequireComponent(typeof(AnimationObject), typeof(MoveObject), typeof(CombatPlayer))]
+[RequireComponent(typeof(PlayerMover))]
 
 public class Player : MonoBehaviour
 {
@@ -14,7 +12,7 @@ public class Player : MonoBehaviour
     private AnimationObject _animationObject;
     private MoveObject _moveObject;
     private CombatPlayer _combatPlayer;
-    private MovePlayer _movePlayer;
+    private PlayerMover _movePlayer;
 
     private bool _isOnGround = false;
     private bool _isJump = false;   
@@ -24,7 +22,7 @@ public class Player : MonoBehaviour
         _animationObject = GetComponent<AnimationObject>();
         _moveObject = GetComponent<MoveObject>();
         _combatPlayer = GetComponent<CombatPlayer>();
-        _movePlayer = GetComponent<MovePlayer>();
+        _movePlayer = GetComponent<PlayerMover>();
     }
 
     private void FixedUpdate()
@@ -80,7 +78,7 @@ public class Player : MonoBehaviour
 
     private void OnEnable()
     {
-        if (TryGetComponent<Heallth>(out Heallth heallth))
+        if (TryGetComponent(out Heallth heallth))
         {
             heallth.Died += Die;
         }
@@ -88,7 +86,7 @@ public class Player : MonoBehaviour
 
     private void OnDisable()
     {
-        if (TryGetComponent<Heallth>(out Heallth heallth))
+        if (TryGetComponent(out Heallth heallth))
         {
             heallth.Died -= Die;
         }

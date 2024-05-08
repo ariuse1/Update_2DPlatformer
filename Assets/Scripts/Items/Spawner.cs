@@ -6,7 +6,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private Item _item;
     [SerializeField] private int _maxCountItem;
     [SerializeField] private SpawnerAreas _spawnPosition;
-
+   
     private int _itemsCount;
     private bool _isWork;
 
@@ -14,7 +14,7 @@ public class Spawner : MonoBehaviour
     {
         _itemsCount = 0;
         _isWork = true;
-        StartCoroutine(Creat());
+        StartCoroutine(Create());
     }
 
     private void StartSpawn()
@@ -26,11 +26,11 @@ public class Spawner : MonoBehaviour
 
         if (!_isWork)
         {
-            StartCoroutine(Creat());
+            StartCoroutine(Create());
         }
     }
 
-    private IEnumerator Creat()
+    private IEnumerator Create()
     {
         float spawnSeconds = 5;
         WaitForSeconds waitTime = new(spawnSeconds);   
@@ -40,12 +40,22 @@ public class Spawner : MonoBehaviour
             yield return waitTime;
 
             Vector2 position = _spawnPosition.GetSpawnPosition();
-            Item newCoin = Instantiate(_item, position, Quaternion.identity);
-            newCoin.transform.SetParent(gameObject.transform);
-            newCoin.Worked += StartSpawn;
+            Item newItem = Instantiate(_item, position, Quaternion.identity);
+            newItem.transform.SetParent(gameObject.transform);
+            newItem.Worked += StartSpawn;
             _itemsCount++;
         }
 
         _isWork = false;
-    }       
+    }
+
+    private void OnDisable()
+    {      
+        Item[] items = GetComponentsInChildren<Item>(); 
+
+        foreach (Item item in items)
+        {
+            item.Worked -= StartSpawn;
+        }        
+    }
 }

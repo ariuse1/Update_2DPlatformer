@@ -38,9 +38,8 @@ public class Vampir : Spell
 
             foreach (Collider2D enemy in hitEnemies)
             {
-                Heallth enemyHeallth = enemy.GetComponent<Heallth>();
-
-                if (enemyHeallth != null)
+                
+                if(enemy.TryGetComponent(out Heallth enemyHeallth))
                 {
                     float currentHealth = enemyHeallth.CurrentHealth;
 

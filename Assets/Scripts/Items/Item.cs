@@ -1,24 +1,13 @@
+using System;
 using UnityEngine;
-using UnityEngine.Events;
 
 abstract public class Item : MonoBehaviour
 {
-    private IActionItem _actionItem;
+    public event Action Worked;
 
-    private void Awake()
+    public virtual void PickUp()
     {
-        _actionItem = GetComponent<IActionItem>();
-    }
-
-    public event UnityAction Worked;
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.TryGetComponent<Player>(out Player hero))
-        {
-            _actionItem?.AddItem(hero);
-            Worked.Invoke();
-            Destroy(gameObject);
-        }
-    }
+        Worked.Invoke();
+        Destroy(gameObject);
+    }   
 }

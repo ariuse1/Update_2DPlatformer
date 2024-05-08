@@ -1,10 +1,7 @@
 using UnityEngine;
 
-[RequireComponent(typeof(AnimationObject))]
-[RequireComponent(typeof(MoveObject))]
-[RequireComponent(typeof(MoveToRoute))]
-[RequireComponent(typeof(Pursuit))]
-[RequireComponent(typeof(CombatMonster))]
+[RequireComponent(typeof(AnimationObject), typeof(MoveObject), typeof(MoveToRoute))]
+[RequireComponent(typeof(Pursuit), typeof(CombatMonster))]
 
 abstract public class Monster : MonoBehaviour
 {
@@ -93,7 +90,7 @@ abstract public class Monster : MonoBehaviour
 
     private void OnEnable()
     {
-        if (TryGetComponent<Heallth>(out Heallth heallth))
+        if (TryGetComponent(out Heallth heallth))
         {
             heallth.Died += Die;
         }
@@ -101,7 +98,7 @@ abstract public class Monster : MonoBehaviour
 
     private void OnDisable()
     {
-        if (TryGetComponent<Heallth>(out Heallth heallth))
+        if (TryGetComponent(out Heallth heallth))
         {
             heallth.Died -= Die;
         }

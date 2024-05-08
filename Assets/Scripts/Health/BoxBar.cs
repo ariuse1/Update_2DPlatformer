@@ -17,6 +17,7 @@ public class BoxBar : Bar
     private float _newHealth;
     private bool _isStart = true;
     private bool _isWork = false;
+    private Coroutine _coroutine;
 
     private void Update()
     {
@@ -40,8 +41,13 @@ public class BoxBar : Bar
             if (_isWork == false)
             {
                 _isWork = true;
-                StopCoroutine(SetSlowHealth());
-                StartCoroutine(SetSlowHealth());
+
+                if (_coroutine != null)
+                {
+                    StopCoroutine(_coroutine);
+                }
+
+                _coroutine = StartCoroutine(SetSlowHealth());
             }
         }
         else
