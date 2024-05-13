@@ -219,6 +219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _checkGroundPoint: {fileID: 0}
+  _radius: 0.4
 --- !u!114 &1877441579643778169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,6 +260,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attackBox: {fileID: 6519996750250924989}
   _attackDamage: 7
+  _waitTimeNextAttack: 1
 --- !u!114 &4292125307201361803
 MonoBehaviour:
   m_ObjectHideFlags: 0

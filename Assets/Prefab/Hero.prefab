@@ -280,6 +280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _checkGroundPoint: {fileID: 1214765711679820982}
+  _radius: 0.01
 --- !u!114 &6167965408452066497
 MonoBehaviour:
   m_ObjectHideFlags: 0

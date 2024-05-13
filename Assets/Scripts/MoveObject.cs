@@ -5,8 +5,10 @@ using UnityEngine;
 public class MoveObject : MonoBehaviour
 {
     [SerializeField] private Transform _checkGroundPoint;
+    [SerializeField] private float _radius;
 
     private Rigidbody2D _rigidbody2D;
+    private LayerMask _platformMask;
 
     public bool IsFlip { get; private set; } = false;
     public bool IsJump { get; private set; }
@@ -14,6 +16,7 @@ public class MoveObject : MonoBehaviour
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        _platformMask = LayerMask.GetMask("Platform");
     }
 
     public void Flip(float direction, bool facingDirection)
@@ -31,16 +34,16 @@ public class MoveObject : MonoBehaviour
 
     public bool IsOnGround()
     {
-        float radius = 0.4f;
+        //float radius = 0.4f;
         Transform checkGroundPoint;
 
         if (_checkGroundPoint == null)
             checkGroundPoint = transform;
         else checkGroundPoint = _checkGroundPoint;
 
-        Collider2D[] coladers = Physics2D.OverlapCircleAll(checkGroundPoint.position, radius);
+        Collider2D[] coladers = Physics2D.OverlapCircleAll(checkGroundPoint.position, _radius, _platformMask);
 
-        return coladers.Length > 1;
+        return coladers.Length > 0;
     }
 
     public void Move(Vector2 target, float speed)
@@ -89,6 +92,6 @@ public class MoveObject : MonoBehaviour
             checkGroundPoint = transform;
         else checkGroundPoint = _checkGroundPoint;
 
-        Gizmos.DrawWireSphere(checkGroundPoint.position, 0.4f);
+        Gizmos.DrawWireSphere(checkGroundPoint.position, _radius);
     }
 }

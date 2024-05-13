@@ -5,18 +5,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private const string StringHorizontal = "Horizontal";
-    private const string StringJump = "Jump";
-    private const string StringAttack = "Fire1";
-
     private AnimationObject _animationObject;
     private MoveObject _moveObject;
     private CombatPlayer _combatPlayer;
     private PlayerMover _movePlayer;
-
-    private bool _isOnGround = false;
-    private bool _isJump = false;   
-
+       
     private void Awake()
     {
         _animationObject = GetComponent<AnimationObject>();
@@ -27,19 +20,9 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _isOnGround = _moveObject.IsOnGround();
-    }
-
-    private void Update()
-    {
-        if (_isOnGround && _isJump)
-        {
-            _isJump = false;
-        }
-
         Action();
     }
-
+     
     public void Die()
     {
     }
@@ -49,21 +32,20 @@ public class Player : MonoBehaviour
         bool isAttack = _combatPlayer.IsWork;
         StatesAnim stateAnim = StatesAnim.Idle;
 
-       
-        if (Input.GetButton(StringHorizontal) && !isAttack)
+
+        if (_movePlayer.isDownHorizontal && !isAttack)
         {
             _movePlayer.Run();
             stateAnim = StatesAnim.Run;
         }
-
-        if (_isOnGround && Input.GetButtonDown(StringJump) && !isAttack)
+            
+        if (_movePlayer.isDownJump && !isAttack)
         {
-            _movePlayer.Jump();
-            _isJump = true;
+            _movePlayer.Jump();            
             stateAnim = StatesAnim.Jump;
         }
-
-        if (_isOnGround && Input.GetButtonDown(StringAttack))
+     
+        if (_movePlayer.isDownAttack)
         {
             _combatPlayer.Attack();
 
