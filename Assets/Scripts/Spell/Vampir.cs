@@ -13,8 +13,7 @@ public class Vampir : Spell
 
     public override AttributeSpell AttributeSpell
     {
-        get { return _attribute; }
-        set { _attribute = value; }
+        get { return _attribute; }        
     }
 
     public override void ActivateSpell()
